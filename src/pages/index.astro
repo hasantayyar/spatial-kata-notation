@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <Base
@@ -33,8 +34,8 @@ import Base from "../layouts/Base.astro";
         then return to the floor and train with respect.
       </p>
       <div class="btn-row fade-up-delay-2">
-        <a class="btn" href="/guide">Read the guide</a>
-        <a class="btn btn-ghost" href="/philosophy">Why this exists</a>
+        <a class="btn" href={withBase("/guide")}>Read the guide</a>
+        <a class="btn btn-ghost" href={withBase("/philosophy")}>Why this exists</a>
       </div>
     </div>
   </section>
@@ -101,8 +102,8 @@ import Base from "../layouts/Base.astro";
 |   ├─ Action : Right Age-uke (J)
 |   └─ Key    : Rise under attack angle`}</pre>
       <div class="btn-row">
-        <a class="btn" href="/examples/pinan-nidan">See Pinan Nidan</a>
-        <a class="btn btn-ghost" href="/reference">Notation key</a>
+        <a class="btn" href={withBase("/examples/pinan-nidan")}>See Pinan Nidan</a>
+        <a class="btn btn-ghost" href={withBase("/reference")}>Notation key</a>
       </div>
     </div>
   </section>

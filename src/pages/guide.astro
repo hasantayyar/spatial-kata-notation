@@ -1,6 +1,7 @@
 ---
 import Docs from "../layouts/Docs.astro";
 import NotationBlock from "../components/NotationBlock.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <Docs
@@ -94,7 +95,7 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   </div>
 
   <p>
-    Next: the full <a href="/reference">notation key</a>, or the complete
-    <a href="/examples/pinan-nidan">Pinan Nidan example</a>.
+    Next: the full <a href={withBase("/reference")}>notation key</a>, or the complete
+    <a href={withBase("/examples/pinan-nidan")}>Pinan Nidan example</a>.
   </p>
 </Docs>

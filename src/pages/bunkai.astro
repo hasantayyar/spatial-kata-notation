@@ -2,6 +2,7 @@
 import Docs from "../layouts/Docs.astro";
 import NotationBlock from "../components/NotationBlock.astro";
 import bunkaiSample from "../content/pinan-nidan-bunkai.sfn.txt?raw";
+import { withBase } from "../lib/paths";
 ---
 
 <Docs
@@ -38,6 +39,6 @@ import bunkaiSample from "../content/pinan-nidan-bunkai.sfn.txt?raw";
 
   <p>
     Full kata example:
-    <a href="/examples/pinan-nidan">Pinan Nidan (Shito-Ryu)</a>.
+    <a href={withBase("/examples/pinan-nidan")}>Pinan Nidan (Shito-Ryu)</a>.
   </p>
 </Docs>

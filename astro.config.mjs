@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://kata-notation.example.com',
+  site: 'https://hasantayyar.github.io',
+  base: '/spatial-kata-notation',
   trailingSlash: 'never',
 });

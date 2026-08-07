@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import NotationBlock from "../../components/NotationBlock.astro";
 import pinan from "../../content/pinan-nidan.sfn.txt?raw";
+import { withBase } from "../../lib/paths";
 ---
 
 <Base
@@ -37,8 +38,8 @@ import pinan from "../../content/pinan-nidan.sfn.txt?raw";
 
       <div class="next prose">
         <p>
-          Learn the symbols in the <a href="/reference">notation key</a>, or
-          see how <a href="/bunkai">bunkai lines</a> attach to the same moves.
+          Learn the symbols in the <a href={withBase("/reference")}>notation key</a>, or
+          see how <a href={withBase("/bunkai")}>bunkai lines</a> attach to the same moves.
         </p>
       </div>
     </div>

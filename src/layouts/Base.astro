@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { withBase } from "../lib/paths";
 
 interface Props {
   title: string;
@@ -14,12 +15,12 @@ const {
 } = Astro.props;
 
 const nav = [
-  { href: "/", label: "Home", id: "home" },
-  { href: "/philosophy", label: "Philosophy", id: "philosophy" },
-  { href: "/guide", label: "Guide", id: "guide" },
-  { href: "/reference", label: "Reference", id: "reference" },
-  { href: "/bunkai", label: "Bunkai", id: "bunkai" },
-  { href: "/examples/pinan-nidan", label: "Example", id: "example" },
+  { href: withBase("/"), label: "Home", id: "home" },
+  { href: withBase("/philosophy"), label: "Philosophy", id: "philosophy" },
+  { href: withBase("/guide"), label: "Guide", id: "guide" },
+  { href: withBase("/reference"), label: "Reference", id: "reference" },
+  { href: withBase("/bunkai"), label: "Bunkai", id: "bunkai" },
+  { href: withBase("/examples/pinan-nidan"), label: "Example", id: "example" },
 ];
 ---
 
@@ -30,7 +31,7 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,7 +44,7 @@ const nav = [
     <div class="site-wrap">
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" href="/" aria-label="SKN home">
+          <a class="brand" href={withBase("/")} aria-label="SKN home">
             <span class="brand-mark" aria-hidden="true">形</span>
             <span class="brand-text">
               <span class="brand-name">SKN</span>

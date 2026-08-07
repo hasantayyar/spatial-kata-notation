@@ -18,6 +18,15 @@ npm run build
 npm run preview
 ```
 
+## Deploy (GitHub Pages)
+
+Site URL: https://hasantayyar.github.io/spatial-kata-notation/
+
+1. Push to `main` (workflow: `.github/workflows/deploy.yml`).
+2. In the repo on GitHub: **Settings → Pages → Source → GitHub Actions**.
+
+`astro.config.mjs` sets `site` and `base` for this project Pages URL. If you later use a custom domain, set `site` to that domain and remove `base`.
+
 ## Contents
 
 - Philosophy: why SKN exists, and the limits of notation
