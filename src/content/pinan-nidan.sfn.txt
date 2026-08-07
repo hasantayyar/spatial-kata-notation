@@ -12,7 +12,7 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   |
   +-- [STEP → W] -------------- (Face: W)
   |   ├─ Stance : [R] Z-D (Zenkutsu-dachi)
-  |   ├─ Action : Right Chudan Tsuki (C)
+  |   ├─ Action : Right Oi-tsuki (C)
   |   └─ Key    : Direct forward thrust
   |
   +-- [MAWATTE → E] ----------- (Face: E)
@@ -24,7 +24,7 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   |
   +-- [STEP → E] -------------- (Face: E)
   |   ├─ Stance : [L] Z-D (Zenkutsu-dachi)
-  |   ├─ Action : Left Chudan Tsuki (C)
+  |   ├─ Action : Left Oi-tsuki (C)
   |   └─ Key    : Direct forward thrust
   |
   +-- [MAWATTE → N] ----------- (Face: N)
@@ -54,7 +54,7 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   |
   +-- [STEP → W] -------------- (Face: W)
   |   ├─ Stance : [R] Z-D
-  |   ├─ Action : Right Tsuki (C)
+  |   ├─ Action : Right Oi-tsuki (C)
   |   └─ Key    : Medium thrust
   |
   +-- [MAWATTE → E] ----------- (Face: E)
@@ -64,7 +64,7 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   |
   +-- [STEP → E] -------------- (Face: E)
   |   ├─ Stance : [L] Z-D
-  |   ├─ Action : Left Tsuki (C)
+  |   ├─ Action : Left Oi-tsuki (C)
   |   └─ Key    : Medium thrust
   |
   +-- [MAWATTE → S] ----------- (Face: S)
@@ -74,17 +74,17 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   |
   +-- [STEP → S] -------------- (Face: S)
   |   ├─ Stance : [R] Z-D
-  |   ├─ Action : Right Tsuki (C)
+  |   ├─ Action : Right Oi-tsuki (C)
   |   └─ Target : Solar plexus
   |
   +-- [STEP → S] -------------- (Face: S)
   |   ├─ Stance : [L] Z-D
-  |   ├─ Action : Left Tsuki (C)
+  |   ├─ Action : Left Oi-tsuki (C)
   |   └─ Target : Solar plexus
   |
   +-- [STEP → S] -------------- (Face: S)
   |   ├─ Stance : [R] Z-D
-  |   ├─ Action : Right Tsuki (C)
+  |   ├─ Action : Right Oi-tsuki (C)
   |   └─ Kiai   : KIAI #2
   |
   +-- [MAWATTE → E · soft] ---- (Face: E)

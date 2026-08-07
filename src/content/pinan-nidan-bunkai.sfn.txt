@@ -16,7 +16,7 @@ SCENARIO: Direct Attack Deflection using Diagonal Tai Sabaki (Body Evasion)
   |                                       |
   +-- Over-extended & off-balance --------+-- [STEP 45° W/NW] into [R] Z-D
                                           ├─ Drive   : Enter through A's blind spot/ribs
-                                          └─ Strike  : Right Chudan Tsuki (Counter)
+                                          └─ Strike  : Right Oi-tsuki (Counter)
 
 ----------------------------------------------------------------------------------------------------
 
@@ -33,6 +33,6 @@ SCENARIO: Direct Attack Deflection using Diagonal Tai Sabaki (Body Evasion)
   |                                       |                (Smashes arm / traps elbow)
   |                                       |
   +-- Structure collapsed to the side ----+-- [STEP 45° E] into [L] Z-D
-                                          └─ Counter : Left Chudan Tsuki to exposed side
+                                          └─ Counter : Left Oi-tsuki to exposed side
 
 Note: One possible reading. Your sensei's bunkai is the standard for your dojo.
