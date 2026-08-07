@@ -1,16 +1,38 @@
 ====================================================================================================
-BUNKAI: Pinan Nidan, Opening (Shito-Ryu reading)
-KATA REF: Moves 1-2 | Partner starts Face E (attacker facing your West)
+BUNKAI: Pinan Nidan (Shito-Ryu), 45° Off-Axis Evasion
+SCENARIO: Direct Attack Deflection using Diagonal Tai Sabaki (Body Evasion)
 ====================================================================================================
 
-#1  [MAWATTE → W]
-  |   ├─ Stance : [L] N-D
-  |   ├─ Action : Left Tetsui-uchi (C) / Right Kamaete
-  |   └─ Bunkai : Deflect incoming grab or punch; hammer-fist to temple / jaw
-  |
-#2  [STEP → W]
-  |   ├─ Stance : [R] Z-D
-  |   ├─ Action : Right Tsuki (C)
-  |   └─ Bunkai : Counter-thrust to body while controlling the line
+--- [ BUNKAI 1: 45° DIAGONAL EVASION & OTOSHI ENTRY ] ---
+
+[ATTACKER (A)]                          [DEFENDER (D)]
+  |                                       |
+  +-- Drives forward on North-South line  |
+  |   (Right Chudan Punch / Mae-Geri)     +-- [EVADE 45° NW] into [L] N-D
+  |                                       |   ├─ Vector    : Diagonal backward step off A's line
+  |                                       |   ├─ Effect    : A's strike passes through empty space
+  |                                       |   ├─ Defense   : Left Tetsui Otoshi-uchi onto A's limb
+  |                                       |   └─ Alignment: D gains a dominant outside flank angle
+  |                                       |
+  +-- Over-extended & off-balance --------+-- [STEP 45° W/NW] into [R] Z-D
+                                          ├─ Drive   : Enter through A's blind spot/ribs
+                                          └─ Strike  : Right Chudan Tsuki (Counter)
+
+----------------------------------------------------------------------------------------------------
+
+--- [ BUNKAI 2: TWO-STAGE 45° REAR EVASION (EAST) ] ---
+
+[ATTACKER (A)]                          [DEFENDER (D)]
+  |                                       |
+  +-- Drives forward from East axis ------+-- [PIVOT 135° SE] into [R] Z-D
+  |                                       |   ├─ Vector    : 45° off A's incoming line (SE angle)
+  |                                       |   └─ Defense 1: Right Gedan-barai (Clears A's limb)
+  |                                       |
+  +-- Attempts secondary punch / grab ----+-- Pull back into [R] N-D
+  |                                       |   └─ Defense 2: Right Tetsui Otoshi-uchi
+  |                                       |                (Smashes arm / traps elbow)
+  |                                       |
+  +-- Structure collapsed to the side ----+-- [STEP 45° E] into [L] Z-D
+                                          └─ Counter : Left Chudan Tsuki to exposed flank
 
 Note: One possible reading. Your sensei's bunkai is the standard for your dojo.

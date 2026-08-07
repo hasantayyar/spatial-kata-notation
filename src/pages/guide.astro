@@ -58,6 +58,20 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
     </li>
   </ul>
 
+  <h2>Multi-beat moves</h2>
+  <p>
+    Some transitions are two actions under one turn or step. Nest them as
+    <code>Beat 1</code> / <code>Beat 2</code> with their own Action lines:
+  </p>
+  <NotationBlock
+    code={`+-- [MAWATTE → E] ----------- (Face: E)
+|   ├─ Beat 1 : [R] Z-D
+|   │   └─ Action : Right Gedan-barai (G)
+|   ├─ Beat 2 : Pull back into [R] N-D
+|   │   └─ Action : Right Tetsui Otoshi-uchi / Otoshi-uke (C)
+|   └─ Note   : Distinct two-part transition`}
+  />
+
   <h2>Refinements from the first draft</h2>
   <p>
     The tree format stays. A few labels are tightened so humans (and future

@@ -6,24 +6,26 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
 [0,0] (Yoi)
   |
   +-- [MAWATTE → W] ----------- (Face: W)
-  |   ├─ Stance : [L] N-D
-  |   ├─ Action : Left Tetsui-uchi (C) / Right Kamaete
-  |   └─ Note   : Looking West
+  |   ├─ Stance : [L] N-D (Nekoashi-dachi)
+  |   ├─ Action : Left Tetsui Otoshi-uchi / Otoshi-uke (C)
+  |   └─ Key    : Direct entry downward drop block
   |
   +-- [STEP → W] -------------- (Face: W)
-  |   ├─ Stance : [R] Z-D
-  |   ├─ Action : Right Tsuki (C)
-  |   └─ Key    : Direct forward drive
+  |   ├─ Stance : [R] Z-D (Zenkutsu-dachi)
+  |   ├─ Action : Right Chudan Tsuki (C)
+  |   └─ Key    : Direct forward thrust
   |
   +-- [MAWATTE → E] ----------- (Face: E)
-  |   ├─ Stance : [R] N-D
-  |   ├─ Action : Right Tetsui-uchi (C) / Left Kamaete
-  |   └─ Note   : Pivot on center axis
+  |   ├─ Beat 1 : [R] Z-D (Zenkutsu-dachi)
+  |   │   └─ Action : Right Gedan-barai (G)
+  |   ├─ Beat 2 : Pull back into [R] N-D (Nekoashi-dachi)
+  |   │   └─ Action : Right Tetsui Otoshi-uchi / Otoshi-uke (C)
+  |   └─ Note   : Distinct two-part transition (Gedan-barai → Otoshi)
   |
   +-- [STEP → E] -------------- (Face: E)
-  |   ├─ Stance : [L] Z-D
-  |   ├─ Action : Left Tsuki (C)
-  |   └─ Key    : Direct forward drive
+  |   ├─ Stance : [L] Z-D (Zenkutsu-dachi)
+  |   ├─ Action : Left Chudan Tsuki (C)
+  |   └─ Key    : Direct forward thrust
   |
   +-- [MAWATTE → N] ----------- (Face: N)
   |   ├─ Stance : [L] Z-D

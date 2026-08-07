@@ -11,12 +11,12 @@ function highlight(src: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(
-      /(\[(?:STEP|MAWATTE|SLIDE)[^\]]*\])/g,
+      /(\[(?:STEP|MAWATTE|SLIDE|EVADE|PIVOT)[^\]]*\])/g,
       '<span class="dir">$1</span>',
     )
     .replace(
-      /(Stance\s*:.*)$/gm,
-      '<span class="stance">$1</span>',
+      /(Stance|Beat\s*\d+)\s*:.*$/gm,
+      '<span class="stance">$&</span>',
     )
     .replace(
       /(Action\s*:.*)$/gm,
@@ -27,7 +27,7 @@ function highlight(src: string): string {
       '<span class="kiai">$1</span>',
     )
     .replace(
-      /(Note|Key|Power|Target|Bunkai)\s*:/g,
+      /(Note|Key|Target|Bunkai|Defense(?:\s*\d+)?|Effect|Strike|Counter|Vector|Alignment|Drive)\s*:/g,
       '<span class="meta">$1</span>:',
     );
 }
