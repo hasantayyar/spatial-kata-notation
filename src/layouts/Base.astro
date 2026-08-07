@@ -1,0 +1,209 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+}
+
+const {
+  title,
+  description = "Spatial Kata Notation: a readable notation for karate kata and bunkai. A practice aid that respects traditional teaching.",
+  active = "",
+} = Astro.props;
+
+const nav = [
+  { href: "/", label: "Home", id: "home" },
+  { href: "/philosophy", label: "Philosophy", id: "philosophy" },
+  { href: "/guide", label: "Guide", id: "guide" },
+  { href: "/reference", label: "Reference", id: "reference" },
+  { href: "/bunkai", label: "Bunkai", id: "bunkai" },
+  { href: "/examples/pinan-nidan", label: "Example", id: "example" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title} · SKN</title>
+  </head>
+  <body>
+    <div class="site-wrap">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="/" aria-label="SKN home">
+            <span class="brand-mark" aria-hidden="true">形</span>
+            <span class="brand-text">
+              <span class="brand-name">SKN</span>
+              <span class="brand-sub">Spatial Kata Notation</span>
+            </span>
+          </a>
+          <nav class="nav" aria-label="Primary">
+            {
+              nav.map((item) => (
+                <a
+                  href={item.href}
+                  class:list={["nav-link", { active: active === item.id }]}
+                  aria-current={active === item.id ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <p class="footer-brand">SKN · Spatial Kata Notation</p>
+          <p class="footer-note">
+            A memory aid for kata practice. Always learn under your sensei.
+            Traditional teaching comes first.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    background: rgba(250, 247, 240, 0.86);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4.25rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper-lift);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .brand-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem 1rem;
+  }
+
+  .nav-link {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--ink);
+    border-bottom-color: var(--seal);
+  }
+
+  main {
+    min-height: 60vh;
+  }
+
+  .site-footer {
+    margin-top: 5rem;
+    border-top: 1px solid var(--line-strong);
+    padding: 2.5rem 0 3rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .footer-brand {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  .footer-note {
+    margin: 0;
+    max-width: 36rem;
+    font-size: 0.92rem;
+    color: var(--ink-mute);
+  }
+
+  @media (max-width: 760px) {
+    .header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-block: 0.85rem;
+    }
+
+    .nav {
+      justify-content: flex-start;
+    }
+  }
+</style>

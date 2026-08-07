@@ -1,0 +1,41 @@
+---
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+  eyebrow?: string;
+}
+
+const { title, description, active, eyebrow } = Astro.props;
+---
+
+<Base title={title} description={description} active={active}>
+  <section class="doc-hero">
+    <div class="container-narrow">
+      {eyebrow && <p class="eyebrow fade-up">{eyebrow}</p>}
+      <h1 class="fade-up">{title}</h1>
+      {
+        description && (
+          <p class="lead fade-up-delay">{description}</p>
+        )
+      }
+    </div>
+  </section>
+  <section class="doc-body">
+    <div class="container-narrow prose fade-up-delay-2">
+      <slot />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .doc-hero {
+    padding: 3.5rem 0 1.5rem;
+  }
+
+  .doc-body {
+    padding-bottom: 3rem;
+  }
+</style>

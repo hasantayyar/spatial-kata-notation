@@ -1,0 +1,36 @@
+---
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+
+function highlight(src: string): string {
+  return src
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(
+      /(\[(?:STEP|MAWATTE|SLIDE)[^\]]*\])/g,
+      '<span class="dir">$1</span>',
+    )
+    .replace(
+      /(Stance\s*:.*)$/gm,
+      '<span class="stance">$1</span>',
+    )
+    .replace(
+      /(Action\s*:.*)$/gm,
+      '<span class="tech">$1</span>',
+    )
+    .replace(
+      /(Kiai\s*:.*)$/gm,
+      '<span class="kiai">$1</span>',
+    )
+    .replace(
+      /(Note|Key|Power|Target|Bunkai)\s*:/g,
+      '<span class="meta">$1</span>:',
+    );
+}
+---
+
+<pre class="notation" set:html={highlight(code.trim())} />

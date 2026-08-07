@@ -1,0 +1,100 @@
+---
+import Docs from "../layouts/Docs.astro";
+import NotationBlock from "../components/NotationBlock.astro";
+---
+
+<Docs
+  title="How to read SKN"
+  eyebrow="Guide"
+  description="A top-down flow of moves. Each branch is one action: turn or step, then stance, technique, and an optional note."
+  active="guide"
+>
+  <h2>The idea</h2>
+  <p>
+    Spatial Kata Notation (SKN) is a plain-text tree. You read from top to bottom.
+    The header names the kata and starting orientation. Each <code>+</code> branch
+    is one beat of the kata.
+  </p>
+
+  <h2>Header</h2>
+  <NotationBlock
+    code={`====================================================================================================
+KATA: Pinan Nidan (Shito-Ryu)
+START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
+====================================================================================================`}
+  />
+  <ul>
+    <li><strong>KATA</strong>: name and style/school reading</li>
+    <li><strong>START</strong>: floor origin <code>[0,0]</code>, initial facing, and opening etiquette</li>
+  </ul>
+
+  <h2>One move</h2>
+  <NotationBlock
+    code={`+-- [STEP → N] -------------- (Face: N)
+|   ├─ Stance : [R] Z-D
+|   ├─ Action : Right Age-uke (J)
+|   └─ Key    : Rise under attack angle`}
+  />
+  <ul>
+    <li>
+      <strong>Movement</strong>: <code>[STEP → N]</code>,
+      <code>[MAWATTE → W]</code>, or <code>[SLIDE → E]</code>
+    </li>
+    <li>
+      <strong>Face</strong>: compass facing after the move (not floor coordinates)
+    </li>
+    <li>
+      <strong>Stance</strong>: lead side <code>[L]</code>/<code>[R]</code> plus
+      stance code
+    </li>
+    <li>
+      <strong>Action</strong>: technique name and height
+      (<code>J</code>/<code>C</code>/<code>G</code>)
+    </li>
+    <li>
+      <strong>Optional line</strong>: <code>Note</code>, <code>Key</code>,
+      <code>Target</code>, <code>Kiai</code>, or <code>Bunkai</code>
+    </li>
+  </ul>
+
+  <h2>Refinements from the first draft</h2>
+  <p>
+    The tree format stays. A few labels are tightened so humans (and future
+    tools) read them the same way:
+  </p>
+  <ul>
+    <li>
+      <code>(Position: W)</code> became <code>(Face: W)</code>: it was always
+      facing, not a grid cell
+    </li>
+    <li>
+      <code>[TURN 90° W]</code> became <code>[MAWATTE → W]</code>: destination
+      facing first; depth/degrees only when useful
+      (<code>· deep</code>, <code>· 90°</code>)
+    </li>
+    <li>
+      Freeform tags collapsed to a small set: Note, Key, Target, Kiai, Bunkai
+    </li>
+  </ul>
+
+  <h2>Compass</h2>
+  <p>
+    Relative to the starting line of the kata: <strong>N</strong> is the opening
+    forward direction. <strong>S</strong> is behind you at yoi.
+    Diagonals use <code>NE NW SE SW</code>. Facing glyphs:
+    <code>^</code> N, <code>v</code> S, <code>&gt;</code> E, <code>&lt;</code> W.
+  </p>
+
+  <div class="callout">
+    <p>
+      Floor coordinates like <code>[0,0]</code> are optional markers for
+      <a href="https://en.wikipedia.org/wiki/Embusen">embusen</a> discussion.
+      Most sheets only need Face + STEP/MAWATTE.
+    </p>
+  </div>
+
+  <p>
+    Next: the full <a href="/reference">notation key</a>, or the complete
+    <a href="/examples/pinan-nidan">Pinan Nidan example</a>.
+  </p>
+</Docs>

@@ -1,0 +1,109 @@
+====================================================================================================
+KATA: Pinan Nidan (Shito-Ryu)
+START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
+====================================================================================================
+
+[0,0] (Yoi)
+  |
+  +-- [MAWATTE → W] ----------- (Face: W)
+  |   ├─ Stance : [L] N-D
+  |   ├─ Action : Left Tetsui-uchi (C) / Right Kamaete
+  |   └─ Note   : Looking West
+  |
+  +-- [STEP → W] -------------- (Face: W)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Tsuki (C)
+  |   └─ Key    : Direct forward drive
+  |
+  +-- [MAWATTE → E] ----------- (Face: E)
+  |   ├─ Stance : [R] N-D
+  |   ├─ Action : Right Tetsui-uchi (C) / Left Kamaete
+  |   └─ Note   : Pivot on center axis
+  |
+  +-- [STEP → E] -------------- (Face: E)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Tsuki (C)
+  |   └─ Key    : Direct forward drive
+  |
+  +-- [MAWATTE → N] ----------- (Face: N)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Gedan-barai (G)
+  |   └─ Note   : Prepare for high block sequence
+  |
+  +-- [STEP → N] -------------- (Face: N)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Age-uke (J)
+  |   └─ Key    : Rise under attack angle
+  |
+  +-- [STEP → N] -------------- (Face: N)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Age-uke (J)
+  |   └─ Key    : Maintain stance elevation
+  |
+  +-- [STEP → N] -------------- (Face: N)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Age-uke (J)
+  |   └─ Kiai   : KIAI #1
+  |
+  +-- [MAWATTE → W · deep] ---- (Face: W)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Gedan-barai (G)
+  |   └─ Note   : Deep turn to the rear left
+  |
+  +-- [STEP → W] -------------- (Face: W)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Tsuki (C)
+  |   └─ Key    : Medium thrust
+  |
+  +-- [MAWATTE → E] ----------- (Face: E)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Gedan-barai (G)
+  |   └─ Note   : Pivot back towards East
+  |
+  +-- [STEP → E] -------------- (Face: E)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Tsuki (C)
+  |   └─ Key    : Medium thrust
+  |
+  +-- [MAWATTE → S] ----------- (Face: S)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Gedan-barai (G)
+  |   └─ Note   : Facing South, returning axis
+  |
+  +-- [STEP → S] -------------- (Face: S)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Tsuki (C)
+  |   └─ Target : Solar plexus
+  |
+  +-- [STEP → S] -------------- (Face: S)
+  |   ├─ Stance : [L] Z-D
+  |   ├─ Action : Left Tsuki (C)
+  |   └─ Target : Solar plexus
+  |
+  +-- [STEP → S] -------------- (Face: S)
+  |   ├─ Stance : [R] Z-D
+  |   ├─ Action : Right Tsuki (C)
+  |   └─ Kiai   : KIAI #2
+  |
+  +-- [MAWATTE → E · soft] ---- (Face: E)
+  |   ├─ Stance : [L] N-D
+  |   ├─ Action : Left Shuto-uke (C)
+  |   └─ Key    : Soft entry knife-hand
+  |
+  +-- [STEP → NE] ------------- (Face: NE)
+  |   ├─ Stance : [R] N-D
+  |   ├─ Action : Right Shuto-uke (C)
+  |   └─ Note   : Step into diagonal line
+  |
+  +-- [MAWATTE → W] ----------- (Face: W)
+  |   ├─ Stance : [R] N-D
+  |   ├─ Action : Right Shuto-uke (C)
+  |   └─ Note   : Pivot across to West diagonal
+  |
+  +-- [STEP → NW] ------------- (Face: NW)
+  |   ├─ Stance : [L] N-D
+  |   ├─ Action : Left Shuto-uke (C)
+  |   └─ Key    : Final block entry
+  |
+  v
+[0,0] RETURN TO YOI → Kamaete → Reigi (Bow)

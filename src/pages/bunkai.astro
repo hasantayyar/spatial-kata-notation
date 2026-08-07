@@ -1,0 +1,43 @@
+---
+import Docs from "../layouts/Docs.astro";
+import NotationBlock from "../components/NotationBlock.astro";
+import bunkaiSample from "../content/pinan-nidan-bunkai.sfn.txt?raw";
+---
+
+<Docs
+  title="Bunkai in SKN"
+  eyebrow="Applications"
+  description="Attach one possible reading to a move. Never treat a bunkai line as the only truth: your sensei’s teaching is the standard."
+  active="bunkai"
+>
+  <h2>Same tree, extra meaning</h2>
+  <p>
+    Bunkai sheets reuse the kata spine. Number moves to match your kata sheet,
+    keep Stance and Action, and replace or add a <code>Bunkai</code> line for
+    the application you are studying.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Many readings exist.</strong> Label the header with whose reading
+      it is (your sensei, a seminar, your notes). When unsure, leave the bunkai
+      line blank and ask in the dojo.
+    </p>
+  </div>
+
+  <h2>Example: opening of Pinan Nidan</h2>
+  <NotationBlock code={bunkaiSample} />
+
+  <h2>Suggested practice</h2>
+  <ol>
+    <li>Write the kata sheet first, without bunkai.</li>
+    <li>Confirm sequence with your sensei’s version.</li>
+    <li>Add bunkai lines only for the applications you were shown.</li>
+    <li>Review the sheet, then put it away and train with a partner.</li>
+  </ol>
+
+  <p>
+    Full kata example:
+    <a href="/examples/pinan-nidan">Pinan Nidan (Shito-Ryu)</a>.
+  </p>
+</Docs>

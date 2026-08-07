@@ -1,0 +1,75 @@
+---
+import Base from "../../layouts/Base.astro";
+import NotationBlock from "../../components/NotationBlock.astro";
+import pinan from "../../content/pinan-nidan.sfn.txt?raw";
+---
+
+<Base
+  title="Pinan Nidan"
+  description="Complete Spatial Kata Notation example for Pinan Nidan (Shito-Ryu reading)."
+  active="example"
+>
+  <section class="doc-hero">
+    <div class="container">
+      <p class="eyebrow fade-up">Example · Shito-Ryu reading</p>
+      <h1 class="fade-up">Pinan Nidan</h1>
+      <p class="lead fade-up-delay">
+        A full SKN sheet for study between classes. Details follow a common
+        Shito-Ryu presentation. Always prefer your sensei’s version.
+      </p>
+    </div>
+  </section>
+
+  <section class="example-body">
+    <div class="container">
+      <div class="callout fade-up-delay-2">
+        <p>
+          <strong>Style note:</strong>
+          <a href="https://en.wikipedia.org/wiki/Embusen">Embusen</a> and
+          technique names vary by school. Treat this as a worked example of the
+          notation, not a claim of universal form.
+        </p>
+      </div>
+
+      <div class="sheet fade-up-delay-2">
+        <NotationBlock code={pinan} />
+      </div>
+
+      <div class="next prose">
+        <p>
+          Learn the symbols in the <a href="/reference">notation key</a>, or
+          see how <a href="/bunkai">bunkai lines</a> attach to the same moves.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .doc-hero {
+    padding: 3.5rem 0 1rem;
+  }
+
+  .example-body {
+    padding-bottom: 3rem;
+  }
+
+  .sheet {
+    margin-top: 1.5rem;
+  }
+
+  .sheet :global(.notation) {
+    font-size: 0.72rem;
+  }
+
+  .next {
+    margin-top: 2rem;
+    max-width: var(--content);
+  }
+
+  @media (min-width: 900px) {
+    .sheet :global(.notation) {
+      font-size: 0.8rem;
+    }
+  }
+</style>

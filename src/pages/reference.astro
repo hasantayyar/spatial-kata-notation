@@ -1,0 +1,150 @@
+---
+import Docs from "../layouts/Docs.astro";
+---
+
+<Docs
+  title="Notation key"
+  eyebrow="Reference"
+  description="Compact vocabulary for compass, stances, movement, and height. Extend only when your dojo needs a new code."
+  active="reference"
+>
+  <h2>Compass &amp; facing</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>[0,0]</code></td>
+          <td>
+            Start / return point on the
+            <a href="https://en.wikipedia.org/wiki/Embusen">embusen</a>
+          </td>
+        </tr>
+        <tr>
+          <td><code>N S E W</code></td>
+          <td>Cardinal directions (N = opening forward)</td>
+        </tr>
+        <tr>
+          <td><code>NE NW SE SW</code></td>
+          <td>Diagonals</td>
+        </tr>
+        <tr>
+          <td><code>^ v &gt; &lt;</code></td>
+          <td>Facing glyphs for N S E W</td>
+        </tr>
+        <tr>
+          <td><code>(Face: W)</code></td>
+          <td>Facing after the move completes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Movement</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Form</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>[STEP → N]</code></td>
+          <td>Step in the named direction</td>
+        </tr>
+        <tr>
+          <td><code>[SLIDE → E]</code></td>
+          <td>Suri-ashi / sliding step</td>
+        </tr>
+        <tr>
+          <td><code>[MAWATTE → W]</code></td>
+          <td>Turn / pivot to face the named direction</td>
+        </tr>
+        <tr>
+          <td><code>[MAWATTE → W · deep]</code></td>
+          <td>Same, with a quality note (deep, soft, 90°, …)</td>
+        </tr>
+        <tr>
+          <td><code>[L]</code> / <code>[R]</code></td>
+          <td>Left or right lead in the stance line</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Stances</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Stance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>N-D</code></td><td>Nekoashi-dachi (cat)</td></tr>
+        <tr><td><code>Z-D</code></td><td>Zenkutsu-dachi (forward)</td></tr>
+        <tr><td><code>M-D</code></td><td>Moto-dachi (basic high)</td></tr>
+        <tr><td><code>S-D</code></td><td>Shiko-dachi (square / horse)</td></tr>
+        <tr><td><code>K-D</code></td><td>Kokutsu-dachi (back)</td></tr>
+        <tr><td><code>H-D</code></td><td>Heisoku-dachi (feet together)</td></tr>
+        <tr><td><code>U-D</code></td><td>Musubi-dachi (attention / heels together)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Add dojo-specific codes in a sheet’s footer if needed. Prefer short,
+    consistent letters over long romanizations in the tree.
+  </p>
+
+  <h2>Height / target band</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>J</code></td><td>Jodan: upper / head</td></tr>
+        <tr><td><code>C</code></td><td>Chudan: middle / body</td></tr>
+        <tr><td><code>G</code></td><td>Gedan: lower</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Optional attribute lines</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Use for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>Note</code></td><td>Orientation, pivot detail, sequence cue</td></tr>
+        <tr><td><code>Key</code></td><td>Execution feel your sensei emphasized</td></tr>
+        <tr><td><code>Target</code></td><td>Anatomical aim when useful</td></tr>
+        <tr><td><code>Kiai</code></td><td>Kiai markers</td></tr>
+        <tr><td><code>Bunkai</code></td><td>One application reading for that move</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Closing</h2>
+  <p>
+    End sheets with a return line, for example:
+  </p>
+  <p>
+    <code>[0,0] RETURN TO YOI → Kamaete → Reigi (Bow)</code>
+  </p>
+</Docs>
