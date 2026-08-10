@@ -35,7 +35,7 @@ import { withBase } from "../lib/paths";
       </p>
       <div class="btn-row fade-up-delay-2">
         <a class="btn" href={withBase("/guide")}>Read the guide</a>
-        <a class="btn btn-ghost" href={withBase("/philosophy")}>Why this exists</a>
+        <a class="btn btn-ghost" href={withBase("/practice")}>Practice generator</a>
       </div>
     </div>
   </section>
@@ -103,7 +103,7 @@ import { withBase } from "../lib/paths";
 |   └─ Key    : Rise under attack angle`}</pre>
       <div class="btn-row">
         <a class="btn" href={withBase("/examples/pinan-nidan")}>See Pinan Nidan</a>
-        <a class="btn btn-ghost" href={withBase("/reference")}>Notation key</a>
+        <a class="btn btn-ghost" href={withBase("/practice")}>Practice generator</a>
       </div>
     </div>
   </section>
@@ -197,7 +197,7 @@ import { withBase } from "../lib/paths";
     background: var(--seal);
     transform-origin: left center;
     opacity: 0;
-    animation: drawPath 1.1s var(--ease) forwards;
+    animation: drawPath 14s var(--ease) infinite both;
   }
 
   .path-1 {
@@ -205,7 +205,7 @@ import { withBase } from "../lib/paths";
     top: 50%;
     width: 28%;
     transform: rotate(-90deg);
-    animation-delay: 0.35s;
+    animation-delay: 0.6s;
   }
 
   .path-2 {
@@ -213,7 +213,7 @@ import { withBase } from "../lib/paths";
     top: 22%;
     width: 22%;
     transform: rotate(0deg);
-    animation-delay: 0.55s;
+    animation-delay: 2.1s;
   }
 
   .path-3 {
@@ -221,7 +221,7 @@ import { withBase } from "../lib/paths";
     top: 22%;
     width: 26%;
     transform: rotate(90deg);
-    animation-delay: 0.75s;
+    animation-delay: 3.6s;
   }
 
   .compass {
@@ -300,13 +300,26 @@ import { withBase } from "../lib/paths";
   }
 
   @keyframes drawPath {
-    from {
+    0% {
       opacity: 0;
-      transform: rotate(var(--r, 0deg)) scaleX(0.15);
+      transform: rotate(var(--r, 0deg)) scaleX(0.12);
     }
-    to {
+    12% {
       opacity: 0.85;
       transform: rotate(var(--r, 0deg)) scaleX(1);
+    }
+    58% {
+      opacity: 0.85;
+      transform: rotate(var(--r, 0deg)) scaleX(1);
+    }
+    74% {
+      opacity: 0;
+      transform: rotate(var(--r, 0deg)) scaleX(1);
+    }
+    75%,
+    100% {
+      opacity: 0;
+      transform: rotate(var(--r, 0deg)) scaleX(0.12);
     }
   }
 

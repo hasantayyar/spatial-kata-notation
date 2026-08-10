@@ -1,0 +1,646 @@
+---
+import Base from "../layouts/Base.astro";
+import { withBase } from "../lib/paths";
+---
+
+<Base
+  title="Practice Generator"
+  description="Turn an SKN kata sheet into practice loops. Paste notation or load Pinan Nidan, then generate a plan."
+  active="practice"
+>
+  <section class="doc-hero">
+    <div class="container">
+      <p class="eyebrow fade-up">Tool</p>
+      <h1 class="fade-up">Practice Generator</h1>
+      <p class="lead fade-up-delay">
+        Paste a kata SKN sheet, load Pinan Nidan, or generate Shito-ryu kihon
+        by belt level (yellow through black). This tool does not replace dojo
+        teaching.
+      </p>
+    </div>
+  </section>
+
+  <section class="practice-body">
+    <div class="container practice-layout">
+      <div class="callout fade-up-delay-2">
+        <p>
+          <strong>Sensei first.</strong> Use this to remember sequence and
+          embusen between classes. If a plan disagrees with your teacher, follow
+          your sensei.
+        </p>
+      </div>
+
+      <div class="practice-grid fade-up-delay-2">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Notation</h2>
+            <div class="head-actions">
+              <button type="button" class="btn btn-ghost btn-small" id="load-pinan">
+                Load Pinan Nidan
+              </button>
+              <button type="button" class="btn btn-ghost btn-small" id="clear-skn">
+                Clear
+              </button>
+            </div>
+          </div>
+          <label class="sr-only" for="skn-input">SKN kata sheet</label>
+          <textarea
+            id="skn-input"
+            spellcheck="false"
+            rows="18"
+            placeholder="Optional. Paste a kata SKN sheet, or leave empty and use Shito-ryu kihon."></textarea>
+
+          <fieldset class="controls">
+            <legend>
+              Modes
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-modes" aria-label="About modes">i</button>
+                <span id="tip-modes" role="tooltip" class="tip-bubble"
+                  >Modes apply when you generate from a kata sheet. Auto builds a balanced plan. You can combine Segment, Facing, and Isolated.</span
+                >
+              </span>
+            </legend>
+            <label>
+              <input type="checkbox" name="mode" value="auto" checked />
+              Auto plan
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-auto" aria-label="About auto plan">i</button>
+                <span id="tip-auto" role="tooltip" class="tip-bubble"
+                  >Opening, mid embusen, finishing line, plus a few focus drills. Best default for sheet practice.</span
+                >
+              </span>
+            </label>
+            <label>
+              <input type="checkbox" name="mode" value="segments" />
+              Segment reps
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-segments" aria-label="About segment reps">i</button>
+                <span id="tip-segments" role="tooltip" class="tip-bubble"
+                  >Repeat a move range. Use Range start/end, or leave blank to auto-split by facing changes.</span
+                >
+              </span>
+            </label>
+            <label>
+              <input type="checkbox" name="mode" value="facing" />
+              Facing groups
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-facing" aria-label="About facing groups">i</button>
+                <span id="tip-facing" role="tooltip" class="tip-bubble"
+                  >Groups consecutive moves that share the same Face (N, E, S, W…) into separate loops.</span
+                >
+              </span>
+            </label>
+            <label>
+              <input type="checkbox" name="mode" value="isolated" />
+              Isolated tech
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-isolated" aria-label="About isolated tech">i</button>
+                <span id="tip-isolated" role="tooltip" class="tip-bubble"
+                  >Drills one technique at a time (stance + action). Multi-beat moves expand into separate beats.</span
+                >
+              </span>
+            </label>
+          </fieldset>
+
+          <fieldset class="controls belt-controls">
+            <legend>
+              Kihon max belt
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-belt" aria-label="About kihon max belt">i</button>
+                <span id="tip-belt" role="tooltip" class="tip-bubble"
+                  >Used only for “Shito-ryu kihon (no sheet)”. Includes techniques usually taught up to that belt. Yellow stays basic; brown unlocks names like Tsugi-ashi. Your dojo order may differ.</span
+                >
+              </span>
+            </legend>
+            <label
+              ><input type="radio" name="max-belt" value="yellow" />
+              Yellow</label
+            >
+            <label
+              ><input type="radio" name="max-belt" value="orange" checked />
+              Orange</label
+            >
+            <label
+              ><input type="radio" name="max-belt" value="green" /> Green</label
+            >
+            <label
+              ><input type="radio" name="max-belt" value="blue" /> Blue</label
+            >
+            <label
+              ><input type="radio" name="max-belt" value="brown" /> Brown</label
+            >
+            <label
+              ><input type="radio" name="max-belt" value="black" /> Black</label
+            >
+          </fieldset>
+
+          <div class="control-row">
+            <label>
+              <span class="field-label">
+                Reps
+                <span class="tip">
+                  <button type="button" class="tip-btn" aria-describedby="tip-reps" aria-label="About reps">i</button>
+                  <span id="tip-reps" role="tooltip" class="tip-bubble"
+                    >How many times to repeat each loop or kihon block.</span
+                  >
+                </span>
+              </span>
+              <input id="reps" type="number" min="1" max="50" value="5" />
+            </label>
+            <label>
+              <span class="field-label">
+                Full runs
+                <span class="tip">
+                  <button type="button" class="tip-btn" aria-describedby="tip-full" aria-label="About full runs">i</button>
+                  <span id="tip-full" role="tooltip" class="tip-bubble"
+                    >How many complete kata runs to put at the end of a sheet plan. Ignored for kihon-only plans.</span
+                  >
+                </span>
+              </span>
+              <input id="full-runs" type="number" min="1" max="10" value="2" />
+            </label>
+            <label>
+              <span class="field-label">
+                Range start
+                <span class="tip">
+                  <button type="button" class="tip-btn" aria-describedby="tip-rstart" aria-label="About range start">i</button>
+                  <span id="tip-rstart" role="tooltip" class="tip-bubble"
+                    >First move number for Segment mode (1-based). Leave blank for the start of the kata.</span
+                  >
+                </span>
+              </span>
+              <input id="range-start" type="number" min="1" placeholder="1" />
+            </label>
+            <label>
+              <span class="field-label">
+                Range end
+                <span class="tip">
+                  <button type="button" class="tip-btn" aria-describedby="tip-rend" aria-label="About range end">i</button>
+                  <span id="tip-rend" role="tooltip" class="tip-bubble"
+                    >Last move number for Segment mode. Leave blank for the end of the kata.</span
+                  >
+                </span>
+              </span>
+              <input id="range-end" type="number" min="1" placeholder="all" />
+            </label>
+            <label>
+              <span class="field-label">
+                Seed
+                <span class="tip">
+                  <button type="button" class="tip-btn" aria-describedby="tip-seed" aria-label="About seed">i</button>
+                  <span id="tip-seed" role="tooltip" class="tip-bubble"
+                    >Optional number for repeatable random picks (kihon and auto focus drills). Same seed = same plan.</span
+                  >
+                </span>
+              </span>
+              <input id="seed" type="number" min="0" placeholder="random" />
+            </label>
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn" id="generate" title="Build a plan from the pasted SKN sheet using the selected modes">Generate from sheet</button>
+            <button type="button" class="btn btn-ghost" id="generate-auto" title="Force Auto mode and build a balanced sheet plan">
+              Generate for me (sheet)
+            </button>
+            <button type="button" class="btn btn-ghost" id="generate-kihon" title="Ignore the sheet and build kihon drills for the selected max belt">
+              Shito-ryu kihon (no sheet)
+            </button>
+            <button type="button" class="btn btn-ghost" id="copy-plan" disabled title="Copy the practice plan text">
+              Copy plan
+            </button>
+          </div>
+          <p class="hint" id="status" role="status"></p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Practice plan</h2>
+          </div>
+          <pre class="notation plan-out" id="plan-out">Generate a plan to see loops here.</pre>
+        </div>
+      </div>
+
+      <p class="next">
+        Need the symbols?
+        <a href={withBase("/guide")}>Guide</a>
+        ·
+        <a href={withBase("/examples/pinan-nidan")}>Pinan Nidan example</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import pinanSource from "../content/pinan-nidan.sfn.txt?raw";
+  import { parseSkn, SknParseError } from "../lib/skn";
+  import {
+    generateKihonPracticePlan,
+    generatePracticePlan,
+    type PracticeMode,
+  } from "../lib/practice";
+  import type { Belt } from "../lib/shito-kihon";
+
+  const input = document.getElementById("skn-input") as HTMLTextAreaElement;
+  const planOut = document.getElementById("plan-out") as HTMLPreElement;
+  const status = document.getElementById("status") as HTMLParagraphElement;
+  const copyBtn = document.getElementById("copy-plan") as HTMLButtonElement;
+  const repsInput = document.getElementById("reps") as HTMLInputElement;
+  const fullRunsInput = document.getElementById("full-runs") as HTMLInputElement;
+  const rangeStartInput = document.getElementById(
+    "range-start",
+  ) as HTMLInputElement;
+  const rangeEndInput = document.getElementById("range-end") as HTMLInputElement;
+  const seedInput = document.getElementById("seed") as HTMLInputElement;
+
+  function setStatus(message: string, isError = false) {
+    status.textContent = message;
+    status.dataset.error = isError ? "true" : "false";
+  }
+
+  function selectedModes(): PracticeMode[] {
+    return Array.from(
+      document.querySelectorAll<HTMLInputElement>('input[name="mode"]:checked'),
+    ).map((el) => el.value as PracticeMode);
+  }
+
+  function selectedMaxBelt(): Belt {
+    const el = document.querySelector<HTMLInputElement>(
+      'input[name="max-belt"]:checked',
+    );
+    return (el?.value as Belt) || "orange";
+  }
+
+  function setModes(modes: PracticeMode[]) {
+    document
+      .querySelectorAll<HTMLInputElement>('input[name="mode"]')
+      .forEach((el) => {
+        el.checked = modes.includes(el.value as PracticeMode);
+      });
+  }
+
+  function optionalNumber(el: HTMLInputElement): number | undefined {
+    const v = el.value.trim();
+    if (!v) return undefined;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : undefined;
+  }
+
+  function showPlan(plan: string, message: string) {
+    planOut.textContent = plan;
+    copyBtn.disabled = false;
+    setStatus(message);
+  }
+
+  function generate(forceAuto = false) {
+    try {
+      if (!input.value.trim()) {
+        setStatus(
+          "No sheet pasted. Use “Shito-ryu kihon (no sheet)”, or load Pinan Nidan.",
+          true,
+        );
+        return;
+      }
+      if (forceAuto) {
+        setModes(["auto"]);
+      }
+      if (selectedModes().length === 0) {
+        setModes(["auto"]);
+      }
+      const kata = parseSkn(input.value);
+      const plan = generatePracticePlan(kata, {
+        modes: forceAuto ? ["auto"] : selectedModes(),
+        reps: Number(repsInput.value) || 5,
+        fullRuns: Number(fullRunsInput.value) || 2,
+        rangeStart: optionalNumber(rangeStartInput),
+        rangeEnd: optionalNumber(rangeEndInput),
+        seed: optionalNumber(seedInput),
+      });
+      showPlan(plan, `Parsed ${kata.moves.length} moves from ${kata.name}.`);
+    } catch (err) {
+      const message =
+        err instanceof SknParseError
+          ? err.message
+          : err instanceof Error
+            ? err.message
+            : "Could not generate plan.";
+      planOut.textContent = message;
+      copyBtn.disabled = true;
+      setStatus(message, true);
+    }
+  }
+
+  function generateKihon() {
+    const maxBelt = selectedMaxBelt();
+    const plan = generateKihonPracticePlan({
+      reps: Number(repsInput.value) || 5,
+      seed: optionalNumber(seedInput),
+      picksPerCategory: 4,
+      maxBelt,
+    });
+    showPlan(
+      plan,
+      `Generated Shito-ryu kihon up to ${maxBelt} belt (no sheet).`,
+    );
+  }
+
+  document.getElementById("load-pinan")?.addEventListener("click", () => {
+    input.value = pinanSource;
+    setStatus("Loaded Pinan Nidan (Shito-Ryu).");
+  });
+
+  document.getElementById("clear-skn")?.addEventListener("click", () => {
+    input.value = "";
+    setStatus("Notation cleared. You can generate kihon without a sheet.");
+  });
+
+  document.getElementById("generate")?.addEventListener("click", () => {
+    generate(false);
+  });
+
+  document.getElementById("generate-auto")?.addEventListener("click", () => {
+    generate(true);
+  });
+
+  document.getElementById("generate-kihon")?.addEventListener("click", () => {
+    generateKihon();
+  });
+
+  copyBtn.addEventListener("click", async () => {
+    const text = planOut.textContent || "";
+    try {
+      await navigator.clipboard.writeText(text);
+      setStatus("Plan copied.");
+    } catch {
+      setStatus("Could not copy. Select the plan and copy manually.", true);
+    }
+  });
+
+  // Tip toggles for touch / click (hover still works via CSS).
+  document.querySelectorAll<HTMLElement>(".tip").forEach((tip) => {
+    const btn = tip.querySelector<HTMLButtonElement>(".tip-btn");
+    if (!btn) return;
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const open = tip.classList.contains("is-open");
+      document
+        .querySelectorAll(".tip.is-open")
+        .forEach((el) => el.classList.remove("is-open"));
+      if (!open) tip.classList.add("is-open");
+    });
+  });
+
+  document.addEventListener("click", () => {
+    document
+      .querySelectorAll(".tip.is-open")
+      .forEach((el) => el.classList.remove("is-open"));
+  });
+</script>
+
+<style>
+  .doc-hero {
+    padding: 3.5rem 0 1rem;
+  }
+
+  .practice-body {
+    padding-bottom: 3rem;
+  }
+
+  .practice-layout {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .panel {
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.35);
+    padding: 1.1rem 1.15rem 1.25rem;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .panel-head h2 {
+    margin: 0;
+    font-size: 1.35rem;
+  }
+
+  .head-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+  }
+
+  textarea,
+  .plan-out {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
+  textarea {
+    min-height: 22rem;
+    resize: vertical;
+    padding: 0.9rem;
+    border: 1px solid var(--line-strong);
+    background: #12100e;
+    color: #e8e1d4;
+  }
+
+  .plan-out {
+    min-height: 28rem;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .controls {
+    margin: 1rem 0 0.75rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem 1rem;
+  }
+
+  .controls legend {
+    font-family: var(--font-display);
+    padding: 0 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .belt-controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .field-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .tip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .tip-btn {
+    width: 1.05rem;
+    height: 1.05rem;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: var(--paper-lift);
+    color: var(--ink-mute);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: help;
+  }
+
+  .tip-btn:hover,
+  .tip-btn:focus-visible,
+  .tip.is-open .tip-btn {
+    color: var(--seal);
+    border-color: var(--seal);
+    outline: none;
+  }
+
+  .tip-bubble {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.45rem);
+    z-index: 30;
+    width: min(16rem, 70vw);
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--line-strong);
+    background: var(--paper-lift);
+    color: var(--ink-soft);
+    box-shadow: var(--shadow);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    line-height: 1.4;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s var(--ease), visibility 0.15s var(--ease);
+  }
+
+  .tip-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border: 6px solid transparent;
+    border-top-color: var(--line-strong);
+    transform: translateX(-50%);
+  }
+
+  .tip:hover .tip-bubble,
+  .tip:focus-within .tip-bubble,
+  .tip.is-open .tip-bubble {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .control-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0.85rem 0 1rem;
+  }
+
+  .control-row label {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .control-row input {
+    width: 100%;
+    padding: 0.45rem 0.5rem;
+    border: 1px solid var(--line-strong);
+    background: var(--paper-lift);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+  }
+
+  .btn-small {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .hint {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-mute);
+  }
+
+  .hint[data-error="true"] {
+    color: var(--seal-deep);
+  }
+
+  .next {
+    margin: 0.5rem 0 0;
+    color: var(--ink-mute);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 960px) {
+    .practice-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .control-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .controls {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

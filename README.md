@@ -33,4 +33,5 @@ Site URL: https://hasantayyar.github.io/spatial-kata-notation/
 - Guide: how to read a sheet
 - Reference: compass, stances, movement codes
 - Bunkai: attaching application lines
+- Practice: generate practice loops from an SKN sheet
 - Example: Pinan Nidan (Shito-Ryu reading)

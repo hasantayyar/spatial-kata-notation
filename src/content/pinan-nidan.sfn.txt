@@ -88,22 +88,22 @@ START: [0,0] Face N (^) | Musubi-dachi → Reigi (Bow) → Yoi (Heisoku-dachi)
   |   └─ Kiai   : KIAI #2
   |
   +-- [MAWATTE → E · soft] ---- (Face: E)
-  |   ├─ Stance : [L] N-D
+  |   ├─ Stance : [L] S-D (Shiko-dachi)
   |   ├─ Action : Left Shuto-uke (C)
   |   └─ Key    : Soft entry knife-hand
   |
   +-- [STEP → NE] ------------- (Face: NE)
-  |   ├─ Stance : [R] N-D
+  |   ├─ Stance : [R] S-D (Shiko-dachi)
   |   ├─ Action : Right Shuto-uke (C)
   |   └─ Note   : Step into diagonal line
   |
   +-- [MAWATTE → W] ----------- (Face: W)
-  |   ├─ Stance : [R] N-D
+  |   ├─ Stance : [R] S-D (Shiko-dachi)
   |   ├─ Action : Right Shuto-uke (C)
   |   └─ Note   : Pivot across to West diagonal
   |
   +-- [STEP → NW] ------------- (Face: NW)
-  |   ├─ Stance : [L] N-D
+  |   ├─ Stance : [L] S-D (Shiko-dachi)
   |   ├─ Action : Left Shuto-uke (C)
   |   └─ Key    : Final block entry
   |
