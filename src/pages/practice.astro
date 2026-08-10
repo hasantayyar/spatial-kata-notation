@@ -35,12 +35,28 @@ import { withBase } from "../lib/paths";
           <div class="panel-head">
             <h2>Notation</h2>
             <div class="head-actions">
-              <button type="button" class="btn btn-ghost btn-small" id="load-pinan">
-                Load Pinan Nidan
-              </button>
-              <button type="button" class="btn btn-ghost btn-small" id="clear-skn">
-                Clear
-              </button>
+              <span class="btn-with-tip">
+                <button type="button" class="btn btn-ghost btn-small" id="load-pinan">
+                  Load Pinan Nidan
+                </button>
+                <span class="tip tip-below">
+                  <button type="button" class="tip-btn" aria-describedby="tip-load" aria-label="About Load Pinan Nidan">i</button>
+                  <span id="tip-load" role="tooltip" class="tip-bubble"
+                    >Fills the textarea with the built-in Pinan Nidan (Shito-Ryu) SKN sheet so you can generate kata loops from it.</span
+                  >
+                </span>
+              </span>
+              <span class="btn-with-tip">
+                <button type="button" class="btn btn-ghost btn-small" id="clear-skn">
+                  Clear
+                </button>
+                <span class="tip tip-below">
+                  <button type="button" class="tip-btn" aria-describedby="tip-clear" aria-label="About Clear">i</button>
+                  <span id="tip-clear" role="tooltip" class="tip-bubble"
+                    >Empties the notation box. Use this before “Shito-ryu kihon (no sheet)” if you do not want a kata sheet involved.</span
+                  >
+                </span>
+              </span>
             </div>
           </div>
           <label class="sr-only" for="skn-input">SKN kata sheet</label>
@@ -198,16 +214,48 @@ import { withBase } from "../lib/paths";
           </div>
 
           <div class="btn-row">
-            <button type="button" class="btn" id="generate" title="Build a plan from the pasted SKN sheet using the selected modes">Generate from sheet</button>
-            <button type="button" class="btn btn-ghost" id="generate-auto" title="Force Auto mode and build a balanced sheet plan">
-              Generate for me (sheet)
-            </button>
-            <button type="button" class="btn btn-ghost" id="generate-kihon" title="Ignore the sheet and build kihon drills for the selected max belt">
-              Shito-ryu kihon (no sheet)
-            </button>
-            <button type="button" class="btn btn-ghost" id="copy-plan" disabled title="Copy the practice plan text">
-              Copy plan
-            </button>
+            <span class="btn-with-tip">
+              <button type="button" class="btn" id="generate">Generate from sheet</button>
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-gen" aria-label="About Generate from sheet">i</button>
+                <span id="tip-gen" role="tooltip" class="tip-bubble"
+                  >Builds a practice plan from the pasted SKN kata sheet using the Modes checkboxes (and Range if Segment is on).</span
+                >
+              </span>
+            </span>
+            <span class="btn-with-tip">
+              <button type="button" class="btn btn-ghost" id="generate-auto">
+                Generate for me (sheet)
+              </button>
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-gen-auto" aria-label="About Generate for me">i</button>
+                <span id="tip-gen-auto" role="tooltip" class="tip-bubble"
+                  >Forces Auto mode and builds a balanced sheet plan: warm-up, opening, mid, finish, focus drills, full runs.</span
+                >
+              </span>
+            </span>
+            <span class="btn-with-tip">
+              <button type="button" class="btn btn-ghost" id="generate-kihon">
+                Shito-ryu kihon (no sheet)
+              </button>
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-gen-kihon" aria-label="About Shito-ryu kihon">i</button>
+                <span id="tip-gen-kihon" role="tooltip" class="tip-bubble"
+                  >Ignores the textarea. Builds kihon drills from the catalog filtered by Kihon max belt. Sheet modes are not used.</span
+                >
+              </span>
+            </span>
+            <span class="btn-with-tip">
+              <button type="button" class="btn btn-ghost" id="copy-plan" disabled>
+                Copy plan
+              </button>
+              <span class="tip">
+                <button type="button" class="tip-btn" aria-describedby="tip-copy" aria-label="About Copy plan">i</button>
+                <span id="tip-copy" role="tooltip" class="tip-bubble"
+                  >Copies the generated practice plan text to your clipboard so you can paste it into notes or send it to a training partner.</span
+                >
+              </span>
+            </span>
           </div>
           <p class="hint" id="status" role="status"></p>
         </div>
@@ -444,6 +492,16 @@ import { withBase } from "../lib/paths";
     justify-content: flex-end;
   }
 
+  .btn-with-tip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .btn-row .btn-with-tip {
+    flex-wrap: wrap;
+  }
+
   textarea,
   .plan-out {
     width: 100%;
@@ -570,6 +628,18 @@ import { withBase } from "../lib/paths";
   .tip.is-open .tip-bubble {
     opacity: 1;
     visibility: visible;
+  }
+
+  .tip-below .tip-bubble {
+    top: calc(100% + 0.45rem);
+    bottom: auto;
+  }
+
+  .tip-below .tip-bubble::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--line-strong);
   }
 
   .control-row {
