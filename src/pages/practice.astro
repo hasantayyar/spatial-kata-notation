@@ -72,7 +72,7 @@ import { withBase } from "../lib/paths";
               <span class="tip">
                 <button type="button" class="tip-btn" aria-describedby="tip-modes" aria-label="About modes">i</button>
                 <span id="tip-modes" role="tooltip" class="tip-bubble"
-                  >Modes apply when you generate from a kata sheet. Auto builds a balanced plan. You can combine Segment, Facing, and Isolated.</span
+                  >Modes apply when you generate from a kata sheet. Auto builds a balanced plan. You can combine Facing and Isolated.</span
                 >
               </span>
             </legend>
@@ -83,16 +83,6 @@ import { withBase } from "../lib/paths";
                 <button type="button" class="tip-btn" aria-describedby="tip-auto" aria-label="About auto plan">i</button>
                 <span id="tip-auto" role="tooltip" class="tip-bubble"
                   >Opening, mid embusen, finishing line, plus a few focus drills. Best default for sheet practice.</span
-                >
-              </span>
-            </label>
-            <label>
-              <input type="checkbox" name="mode" value="segments" />
-              Segment reps
-              <span class="tip">
-                <button type="button" class="tip-btn" aria-describedby="tip-segments" aria-label="About segment reps">i</button>
-                <span id="tip-segments" role="tooltip" class="tip-bubble"
-                  >Repeat a move range. Use Range start/end, or leave blank to auto-split by facing changes.</span
                 >
               </span>
             </label>
@@ -150,7 +140,7 @@ import { withBase } from "../lib/paths";
             >
           </fieldset>
 
-          <div class="control-row">
+          <div class="control-row control-row-compact">
             <label>
               <span class="field-label">
                 Reps
@@ -177,30 +167,6 @@ import { withBase } from "../lib/paths";
             </label>
             <label>
               <span class="field-label">
-                Range start
-                <span class="tip">
-                  <button type="button" class="tip-btn" aria-describedby="tip-rstart" aria-label="About range start">i</button>
-                  <span id="tip-rstart" role="tooltip" class="tip-bubble"
-                    >First move number for Segment mode (1-based). Leave blank for the start of the kata.</span
-                  >
-                </span>
-              </span>
-              <input id="range-start" type="number" min="1" placeholder="1" />
-            </label>
-            <label>
-              <span class="field-label">
-                Range end
-                <span class="tip">
-                  <button type="button" class="tip-btn" aria-describedby="tip-rend" aria-label="About range end">i</button>
-                  <span id="tip-rend" role="tooltip" class="tip-bubble"
-                    >Last move number for Segment mode. Leave blank for the end of the kata.</span
-                  >
-                </span>
-              </span>
-              <input id="range-end" type="number" min="1" placeholder="all" />
-            </label>
-            <label>
-              <span class="field-label">
                 Seed
                 <span class="tip">
                   <button type="button" class="tip-btn" aria-describedby="tip-seed" aria-label="About seed">i</button>
@@ -219,7 +185,7 @@ import { withBase } from "../lib/paths";
               <span class="tip">
                 <button type="button" class="tip-btn" aria-describedby="tip-gen" aria-label="About Generate from sheet">i</button>
                 <span id="tip-gen" role="tooltip" class="tip-bubble"
-                  >Builds a practice plan from the pasted SKN kata sheet using the Modes checkboxes (and Range if Segment is on).</span
+                  >Builds a practice plan from the pasted SKN kata sheet using the selected Modes.</span
                 >
               </span>
             </span>
@@ -294,10 +260,6 @@ import { withBase } from "../lib/paths";
   const copyBtn = document.getElementById("copy-plan") as HTMLButtonElement;
   const repsInput = document.getElementById("reps") as HTMLInputElement;
   const fullRunsInput = document.getElementById("full-runs") as HTMLInputElement;
-  const rangeStartInput = document.getElementById(
-    "range-start",
-  ) as HTMLInputElement;
-  const rangeEndInput = document.getElementById("range-end") as HTMLInputElement;
   const seedInput = document.getElementById("seed") as HTMLInputElement;
 
   function setStatus(message: string, isError = false) {
@@ -359,8 +321,6 @@ import { withBase } from "../lib/paths";
         modes: forceAuto ? ["auto"] : selectedModes(),
         reps: Number(repsInput.value) || 5,
         fullRuns: Number(fullRunsInput.value) || 2,
-        rangeStart: optionalNumber(rangeStartInput),
-        rangeEnd: optionalNumber(rangeEndInput),
         seed: optionalNumber(seedInput),
       });
       showPlan(plan, `Parsed ${kata.moves.length} moves from ${kata.name}.`);
@@ -647,6 +607,10 @@ import { withBase } from "../lib/paths";
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.65rem;
     margin: 0.85rem 0 1rem;
+  }
+
+  .control-row-compact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .control-row label {

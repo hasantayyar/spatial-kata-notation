@@ -13,14 +13,12 @@ import {
   type Technique,
 } from "./shito-kihon";
 
-export type PracticeMode = "segments" | "isolated" | "facing" | "auto";
+export type PracticeMode = "isolated" | "facing" | "auto";
 
 export interface PracticeOptions {
   modes: PracticeMode[];
   reps: number;
   fullRuns: number;
-  rangeStart?: number;
-  rangeEnd?: number;
   seed?: number;
 }
 
@@ -146,17 +144,6 @@ export function generateKihonPracticePlan(
   return out.join("\n").trim() + "\n";
 }
 
-function clampRange(
-  moves: SknMove[],
-  start?: number,
-  end?: number,
-): SknMove[] {
-  const from = Math.max(1, start ?? 1);
-  const to = Math.min(moves.length, end ?? moves.length);
-  if (from > to) return moves;
-  return moves.filter((m) => m.index >= from && m.index <= to);
-}
-
 function loopFromMoves(
   title: string,
   moves: SknMove[],
@@ -168,38 +155,6 @@ function loopFromMoves(
     moveIndexes: moves.map((m) => m.index),
     lines: moves.map((m) => `   - #${m.index} ${moveSummary(m)}`),
   };
-}
-
-function segmentLoops(
-  kata: SknKata,
-  reps: number,
-  start?: number,
-  end?: number,
-): PracticeLoop[] {
-  const selected = clampRange(kata.moves, start, end);
-  if (selected.length === 0) return [];
-
-  if (start != null || end != null) {
-    const label =
-      selected.length === 1
-        ? `Move ${selected[0].index}`
-        : `Moves ${selected[0].index}-${selected[selected.length - 1].index}`;
-    return [loopFromMoves(`LOOP: Segment (${label})`, selected, reps)];
-  }
-
-  const groups = groupByFacing(kata.moves);
-  const loops: PracticeLoop[] = [];
-  for (const group of groups) {
-    if (group.moves.length === 0) continue;
-    const first = group.moves[0].index;
-    const last = group.moves[group.moves.length - 1].index;
-    const label =
-      first === last
-        ? `Face ${group.face} (move ${first})`
-        : `Face ${group.face} (moves ${first}-${last})`;
-    loops.push(loopFromMoves(`LOOP: ${label}`, group.moves, reps));
-  }
-  return loops;
 }
 
 function isolatedLoops(kata: SknKata, reps: number): PracticeLoop[] {
@@ -331,11 +286,6 @@ export function generatePracticePlan(
   if (modes.has("auto") || modes.size === 0) {
     sections.push(...autoPlan(kata, reps, seed));
   } else {
-    if (modes.has("segments")) {
-      sections.push(
-        ...segmentLoops(kata, reps, options.rangeStart, options.rangeEnd),
-      );
-    }
     if (modes.has("facing")) {
       sections.push(...facingLoops(kata, reps));
     }
@@ -344,7 +294,7 @@ export function generatePracticePlan(
       sections.push(...(all.length > 12 ? all.slice(0, 12) : all));
       if (all.length > 12) {
         sections.push({
-          title: `… ${all.length - 12} more isolate drills omitted (narrow range or use auto)`,
+          title: `… ${all.length - 12} more isolate drills omitted (use auto for a shorter plan)`,
           reps: 0,
           moveIndexes: [],
           lines: [],
